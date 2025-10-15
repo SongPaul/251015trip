@@ -1234,11 +1234,80 @@
         window.addEventListener('online', updateOnlineStatus);
         window.addEventListener('offline', updateOnlineStatus);
         
+        // 동적 Manifest 생성
+        function updateManifestPaths() {
+            const basePath = window.location.pathname.includes('/251015trip/') ? '/251015trip' : '';
+            
+            // 기존 manifest 링크 제거
+            const existingManifest = document.querySelector('link[rel="manifest"]');
+            if (existingManifest) {
+                existingManifest.remove();
+            }
+            
+            // 동적 manifest 생성
+            const manifestContent = {
+                "name": "상해 2박3일 가족 여행 가이드",
+                "short_name": "상해여행",
+                "description": "상해 2박3일 가족 여행 완전 가이드 - 6개월 아기 동반",
+                "start_url": `${basePath}/`,
+                "display": "standalone",
+                "background_color": "#667eea",
+                "theme_color": "#2196F3",
+                "orientation": "portrait-primary",
+                "scope": `${basePath}/`,
+                "lang": "ko",
+                "categories": ["travel", "lifestyle", "navigation"],
+                "icons": [
+                    { "src": `${basePath}/icon-72.svg`, "sizes": "72x72", "type": "image/svg+xml", "purpose": "any" },
+                    { "src": `${basePath}/icon-96.svg`, "sizes": "96x96", "type": "image/svg+xml", "purpose": "any" },
+                    { "src": `${basePath}/icon-128.svg`, "sizes": "128x128", "type": "image/svg+xml", "purpose": "any" },
+                    { "src": `${basePath}/icon-144.svg`, "sizes": "144x144", "type": "image/svg+xml", "purpose": "any" },
+                    { "src": `${basePath}/icon-152.svg`, "sizes": "152x152", "type": "image/svg+xml", "purpose": "any" },
+                    { "src": `${basePath}/icon-192.svg`, "sizes": "192x192", "type": "image/svg+xml", "purpose": "any maskable" },
+                    { "src": `${basePath}/icon-384.svg`, "sizes": "384x384", "type": "image/svg+xml", "purpose": "any" },
+                    { "src": `${basePath}/icon-512.svg`, "sizes": "512x512", "type": "image/svg+xml", "purpose": "any maskable" }
+                ],
+                "shortcuts": [
+                    {
+                        "name": "오늘 일정",
+                        "short_name": "일정",
+                        "description": "오늘의 여행 일정 보기",
+                        "url": `${basePath}/?tab=schedule`,
+                        "icons": [{ "src": `${basePath}/icon-96.svg`, "sizes": "96x96" }]
+                    },
+                    {
+                        "name": "식당 정보",
+                        "short_name": "식당",
+                        "description": "추천 식당 정보",
+                        "url": `${basePath}/?tab=restaurants`,
+                        "icons": [{ "src": `${basePath}/icon-96.svg`, "sizes": "96x96" }]
+                    }
+                ]
+            };
+            
+            // Blob으로 manifest 생성
+            const manifestBlob = new Blob([JSON.stringify(manifestContent)], { type: 'application/json' });
+            const manifestURL = URL.createObjectURL(manifestBlob);
+            
+            // 새 manifest 링크 추가
+            const manifestLink = document.createElement('link');
+            manifestLink.rel = 'manifest';
+            manifestLink.href = manifestURL;
+            document.head.appendChild(manifestLink);
+            
+            console.log('Dynamic manifest created with base path:', basePath);
+        }
+        
         // Service Worker 등록
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', async () => {
                 try {
-                    const registration = await navigator.serviceWorker.register('/sw.js');
+                    // 동적 manifest 업데이트
+                    updateManifestPaths();
+                    
+                    // 동적으로 Service Worker 경로 결정
+                    const basePath = window.location.pathname.includes('/251015trip/') ? '/251015trip' : '';
+                    const registration = await navigator.serviceWorker.register(`${basePath}/sw.js`);
                     console.log('Service Worker 등록 성공:', registration.scope);
                     
                     // 업데이트 확인

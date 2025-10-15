@@ -1,30 +1,47 @@
-const CACHE_NAME = 'shanghai-travel-guide-v1.0';
+const CACHE_NAME = 'shanghai-travel-guide-v1.1';
+
+// 동적으로 기본 경로 감지
+const getBasePath = () => {
+  if (typeof self !== 'undefined' && self.location) {
+    const path = self.location.pathname;
+    if (path.includes('/251015trip/')) {
+      return '/251015trip';
+    }
+  }
+  return '';
+};
+
+const BASE_PATH = getBasePath();
+
 const urlsToCache = [
-  '/',
-  '/index.html',
-  '/manifest.json',
-  '/icon-72.svg',
-  '/icon-96.svg',
-  '/icon-128.svg',
-  '/icon-144.svg',
-  '/icon-152.svg',
-  '/icon-192.svg',
-  '/icon-384.svg',
-  '/icon-512.svg'
+  `${BASE_PATH}/`,
+  `${BASE_PATH}/index.html`,
+  `${BASE_PATH}/manifest.json`,
+  `${BASE_PATH}/icon-72.svg`,
+  `${BASE_PATH}/icon-96.svg`,
+  `${BASE_PATH}/icon-128.svg`,
+  `${BASE_PATH}/icon-144.svg`,
+  `${BASE_PATH}/icon-152.svg`,
+  `${BASE_PATH}/icon-192.svg`,
+  `${BASE_PATH}/icon-384.svg`,
+  `${BASE_PATH}/icon-512.svg`
 ];
 
 // 설치 이벤트
 self.addEventListener('install', event => {
-  console.log('Service Worker 설치 중...');
+  console.log('Service Worker 설치 중... Base Path:', BASE_PATH);
   event.waitUntil(
     caches.open(CACHE_NAME)
       .then(cache => {
-        console.log('캐시 파일들을 저장 중...');
+        console.log('캐시 파일들을 저장 중...', urlsToCache);
         return cache.addAll(urlsToCache);
       })
       .then(() => {
         console.log('모든 파일이 캐시되었습니다');
         return self.skipWaiting();
+      })
+      .catch(error => {
+        console.error('캐시 저장 실패:', error);
       })
   );
 });
@@ -51,11 +68,17 @@ self.addEventListener('activate', event => {
 
 // 네트워크 요청 가로채기
 self.addEventListener('fetch', event => {
+  // 같은 origin의 요청만 처리
+  if (!event.request.url.startsWith(self.location.origin)) {
+    return;
+  }
+
   event.respondWith(
     caches.match(event.request)
       .then(response => {
         // 캐시에서 찾으면 반환
         if (response) {
+          console.log('캐시에서 반환:', event.request.url);
           return response;
         }
         
@@ -78,7 +101,8 @@ self.addEventListener('fetch', event => {
       })
       .catch(() => {
         // 오프라인일 때 기본 페이지 반환
-        return caches.match('/index.html');
+        console.log('오프라인 모드: 기본 페이지 반환');
+        return caches.match(`${BASE_PATH}/index.html`);
       })
   );
 });
@@ -96,8 +120,8 @@ self.addEventListener('push', event => {
     const data = event.data.json();
     const options = {
       body: data.body,
-      icon: '/icon-192.svg',
-      badge: '/icon-96.svg',
+      icon: `${BASE_PATH}/icon-192.svg`,
+      badge: `${BASE_PATH}/icon-96.svg`,
       vibrate: [100, 50, 100],
       data: {
         dateOfArrival: Date.now(),
