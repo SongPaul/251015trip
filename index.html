@@ -429,6 +429,8 @@
             <button class="nav-tab" onclick="showTab('attractions')">🏛️ 관광지</button>
             <button class="nav-tab" onclick="showTab('restaurants')">🍽️ 식당</button>
             <button class="nav-tab" onclick="showTab('cafes')">☕ 카페</button>
+            <button class="nav-tab" onclick="showTab('hotel')">🏨 숙소</button>
+            <button class="nav-tab" onclick="showTab('emergency')">🏭 긴급</button>
             <button class="nav-tab" onclick="showTab('tips')">💡 팁</button>
         </div>
         
@@ -462,7 +464,10 @@
                     <div class="schedule-header">
                         <div class="time">14:00</div>
                         <div class="activity-title">☕ Captain George</div>
-                        <button class="copy-btn" onclick="copyText('Captain George风味博物馆')">복사</button>
+                        <div style="display: flex; gap: 5px; margin-left: auto;">
+                            <button class="copy-btn" onclick="window.open('https://www.dianping.com/shop/H4TMU8DDCW7L2AfN', '_blank')" style="background: #FF6B35;">Dianping</button>
+                            <button class="copy-btn" onclick="copyText('Captain George风味博物馆')">복사</button>
+                        </div>
                     </div>
                     <div class="activity-details">
                         실험실 컨셉 카페 (태원로 236호)
@@ -487,7 +492,10 @@
                     <div class="schedule-header">
                         <div class="time">16:00</div>
                         <div class="activity-title">🍽️ 라오지스 주자</div>
-                        <button class="copy-btn" onclick="copyText('老吉士酒家淮海路店')">복사</button>
+                        <div style="display: flex; gap: 5px; margin-left: auto;">
+                            <button class="copy-btn" onclick="window.open('https://www.dianping.com/shop/k175tm2mcNdosVCq', '_blank')" style="background: #FF6B35;">Dianping</button>
+                            <button class="copy-btn" onclick="copyText('老吉士酒家淮海路店')">복사</button>
+                        </div>
                     </div>
                     <div class="activity-details">
                         상하이 본토 요리 (화이하이중로 473호)
@@ -499,7 +507,10 @@
                     <div class="schedule-header">
                         <div class="time">17:30</div>
                         <div class="activity-title">☕ D. ORINO Coffee</div>
-                        <button class="copy-btn" onclick="copyText('D. ORINO咖啡')">복사</button>
+                        <div style="display: flex; gap: 5px; margin-left: auto;">
+                            <button class="copy-btn" onclick="window.open('https://www.dianping.com/shop/H5NU3TYNj5z2UtE4', '_blank')" style="background: #FF6B35;">Dianping</button>
+                            <button class="copy-btn" onclick="copyText('D. ORINO咖啡')">복사</button>
+                        </div>
                     </div>
                     <div class="activity-details">
                         조용하고 넓은 카페 (강딩로 833호)
@@ -523,51 +534,72 @@
                 <div class="schedule-item">
                     <div class="schedule-header">
                         <div class="time">09:00</div>
-                        <div class="activity-title">🏯 예원 (豫园)</div>
-                        <button class="copy-btn" onclick="copyText('豫园')">복사</button>
+                        <div class="activity-title">🏯 장원 (张园)</div>
+                        <button class="copy-btn" onclick="copyText('张园')">복사</button>
                     </div>
                     <div class="activity-details">
-                        명나라 정원 관람 (황푸구)
-                        <span class="badge badge-warning">09:00 이전 도착 권장</span>
+                        리모델링된 석고문 건축 (난징시루 205번지)
+                        <span class="badge badge-success">유모차 OK</span>
+                        <span class="badge badge-info">호텔에서 도보 5분</span>
+                    </div>
+                </div>
+                
+                <div class="schedule-item">
+                    <div class="schedule-header">
+                        <div class="time">09:20</div>
+                        <div class="activity-title">☕ LuckyDraw Coffee</div>
+                        <div style="display: flex; gap: 5px; margin-left: auto;">
+                            <button class="copy-btn" onclick="window.open('https://www.dianping.com/shop/k1S8UDo60FhHs40F', '_blank')" style="background: #FF6B35;">Dianping</button>
+                            <button class="copy-btn" onclick="copyText('LuckyDraw Coffee北京西路店')">복사</button>
+                        </div>
+                    </div>
+                    <div class="activity-details">
+                        싱글 오리진 로스터리 (베이징시루 780호)
+                        <span class="badge badge-warning">접이식 유모차만</span>
+                        <span class="badge badge-info">09:00-19:00</span>
+                    </div>
+                </div>
+                
+                <div class="schedule-item">
+                    <div class="schedule-header">
+                        <div class="time">10:20</div>
+                        <div class="activity-title">🍜 타이랑 (Thai Gallery)</div>
+                        <div style="display: flex; gap: 5px; margin-left: auto;">
+                            <button class="copy-btn" onclick="window.open('https://www.dianping.com/shop/k3ZbV7SZiJdS33o8', '_blank')" style="background: #FF6B35;">Dianping</button>
+                            <button class="copy-btn" onclick="copyText('泰廊静安公园店')">복사</button>
+                        </div>
+                    </div>
+                    <div class="activity-details">
+                        징안공원 내 태국 요리
+                        <span class="badge badge-warning">"不要辣" 필수</span>
                         <span class="badge badge-success">유모차 OK</span>
                     </div>
                 </div>
                 
                 <div class="schedule-item">
                     <div class="schedule-header">
-                        <div class="time">11:30</div>
-                        <div class="activity-title">🍜 점심 식사</div>
-                    </div>
-                    <div class="activity-details">
-                        <strong>선택 1:</strong> 타이갤러리 (태국 요리)
-                        <button class="copy-btn" onclick="copyText('泰馆嘉里中心店')" style="margin-left: 10px;">복사</button>
-                        <br><br>
-                        <strong>선택 2:</strong> 椿庐 (창작 중식)
-                        <button class="copy-btn" onclick="copyText('椿庐凯德晶萃店')" style="margin-left: 10px;">복사</button>
-                    </div>
-                </div>
-                
-                <div class="schedule-item">
-                    <div class="schedule-header">
-                        <div class="time">13:15</div>
+                        <div class="time">12:00</div>
                         <div class="activity-title">🛍️ 난징동루 보행자 거리</div>
                         <button class="copy-btn" onclick="copyText('南京东路步行街')">복사</button>
                     </div>
                     <div class="activity-details">
                         쇼핑 및 산책
                         <span class="badge badge-success">유모차 OK</span>
-                        <span class="badge badge-info">13:00-15:00 한산</span>
+                        <span class="badge badge-info">12:00-13:45 한산</span>
                     </div>
                 </div>
                 
                 <div class="schedule-item">
                     <div class="schedule-header">
-                        <div class="time">15:45</div>
+                        <div class="time">14:05</div>
                         <div class="activity-title">☕ The People 카페</div>
-                        <button class="copy-btn" onclick="copyText('东大名路501号')">복사</button>
+                        <div style="display: flex; gap: 5px; margin-left: auto;">
+                            <button class="copy-btn" onclick="window.open('https://www.dianping.com/shop/GaMcpGbpMxbQq8nq', '_blank')" style="background: #FF6B35;">Dianping</button>
+                            <button class="copy-btn" onclick="copyText('东大名路501号')">복사</button>
+                        </div>
                     </div>
                     <div class="activity-details">
-                        48층 푸둥 야경 (백옥란 광장)
+                        48층 푸둥 야경 (동대명로 501호)
                         <span class="badge badge-success">유모차 OK</span>
                         <span class="badge badge-info">10:00-22:00</span>
                     </div>
@@ -575,12 +607,15 @@
                 
                 <div class="schedule-item">
                     <div class="schedule-header">
-                        <div class="time">17:30</div>
-                        <div class="activity-title">🥟 디앤더더</div>
-                        <button class="copy-btn" onclick="copyText('点都德新世界店')">복사</button>
+                        <div class="time">15:30</div>
+                        <div class="activity-title">🥟 디앤더더 (백옥란광장)</div>
+                        <div style="display: flex; gap: 5px; margin-left: auto;">
+                            <button class="copy-btn" onclick="window.open('https://www.dianping.com/shop/G3If7J1ew2lHoK7c', '_blank')" style="background: #FF6B35;">Dianping</button>
+                            <button class="copy-btn" onclick="copyText('点都德(白玉兰广场店)')">복사</button>
+                        </div>
                     </div>
                     <div class="activity-details">
-                        광둥 딤섬 (난징서로 신세계 백화점 6층)
+                        광둥 딤섬 (백옥란광장 1층, The People과 동일 건물)
                         <span class="badge badge-success">유모차 입장 가능</span>
                         <span class="badge badge-info">07:30-22:00</span>
                     </div>
@@ -607,7 +642,10 @@
                     <div class="schedule-header">
                         <div class="time">10:10</div>
                         <div class="activity-title">☕ Polux Bistro</div>
-                        <button class="copy-btn" onclick="copyText('Polux Bistro')">복사</button>
+                        <div style="display: flex; gap: 5px; margin-left: auto;">
+                            <button class="copy-btn" onclick="window.open('https://www.dianping.com/shop/H25LX6KqbzAWVRNl', '_blank')" style="background: #FF6B35;">Dianping</button>
+                            <button class="copy-btn" onclick="copyText('Polux by Paul Pairet')">복사</button>
+                        </div>
                     </div>
                     <div class="activity-details">
                         프렌치 브런치 (신천지 마루 18호)
@@ -631,14 +669,11 @@
                 <div class="schedule-item">
                     <div class="schedule-header">
                         <div class="time">11:45</div>
-                        <div class="activity-title">🍽️ 점심 식사</div>
-                    </div>
-                    <div class="activity-details">
-                        <strong>선택 1:</strong> 공작천채 (사천 요리)
-                        <button class="copy-btn" onclick="copyText('孔雀川菜新天地店')" style="margin-left: 10px;">복사</button>
-                        <br><br>
-                        <strong>선택 2:</strong> 元古雲境 (창작 중식)
-                        <button class="copy-btn" onclick="copyText('元古雲境新天地店')" style="margin-left: 10px;">복사</button>
+                        <div class="activity-title">🍽️ 점심 식사 元古雲境 (창작 중식)</div>
+                        <div style="display: flex; gap: 5px; margin-left: auto;">
+                            <button class="copy-btn" onclick="window.open('https://www.dianping.com/shop/la91aGGYxa1SC9S6', '_blank')" style="background: #FF6B35;">Dianping</button>
+                            <button class="copy-btn" onclick="copyText('元古雲境新天地店')">복사</button>
+                        </div>
                     </div>
                 </div>
                 
@@ -665,26 +700,55 @@
                 <div class="info-content">
                     <div class="info-row">
                         <div class="info-label">위치:</div>
-                        <div class="info-value">우캉로 전 구간</div>
+                        <div class="info-value">화이하이중로 × 우캉로 교차로</div>
                     </div>
                     <div class="info-row">
                         <div class="info-label">특징:</div>
                         <div class="info-value">
-                            • 프랑스 조계지 시절 건축물 밀집<br>
-                            • 우캉멘션: 1924년 지어진 선박 모양 아파트, 인생샷 명소
+                            • 프랑스 조계지 시절 건축물<br>
+                            • 우캉멘션(1924년, 배 모양 아파트)
                         </div>
                     </div>
                     <div class="info-row">
                         <div class="info-label">유모차:</div>
                         <div class="info-value">
                             <span class="badge badge-success">전 구간 평탄</span>
-                            보도 넓음
                         </div>
                     </div>
                     <div class="tip-section">
                         <div class="tip-title">📸 사진 팁</div>
-                        <div class="tip-item">• 우캉멘션 앞은 항상 사람이 많음 → 옆 골목에서 찍는 게 더 예쁨</div>
-                        <div class="tip-item">• 근처에 % Arabica, Baker & Spice 등 카페 많음</div>
+                        <div class="tip-item">• 오전/저녁이 인생샷 최적</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="info-card">
+                <div class="attraction-header">
+                    <div class="info-title">장원 (张园)</div>
+                    <div class="info-subtitle">2일차 - 리모델링된 석고문 건축</div>
+                </div>
+                <div class="info-content">
+                    <div class="info-row">
+                        <div class="info-label">위치:</div>
+                        <div class="info-value">난징시루 205번지</div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">특징:</div>
+                        <div class="info-value">
+                            • 리모델링된 석고문 건축<br>
+                            • Dior, LV 등 명품 부티크<br>
+                            • 야간 조명
+                        </div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">유모차:</div>
+                        <div class="info-value">
+                            <span class="badge badge-success">넓은 광장, 평탄</span>
+                        </div>
+                    </div>
+                    <div class="tip-section">
+                        <div class="tip-title">📸 사진 팁</div>
+                        <div class="tip-item">• 서문(石门一路)에서 사진 촬영</div>
                     </div>
                 </div>
             </div>
@@ -704,7 +768,7 @@
                         <div class="info-value">
                             • 명나라 시대 사립 정원<br>
                             • 호수·정자·곡선 회랑<br>
-                            • 주변 성황묘 시장과 연결 → 전통 간식 구경
+                            • 주변 성황묘 시장과 연결
                         </div>
                     </div>
                     <div class="info-row">
@@ -749,6 +813,39 @@
                             <span class="badge badge-success">전 구간 평탄</span>
                             <span class="badge badge-info">13:00-15:00 비교적 한산</span>
                         </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="info-card">
+                <div class="attraction-header">
+                    <div class="info-title">와이탄 (The Bund)</div>
+                    <div class="info-subtitle">2일차 - 상하이 대표 야경 명소</div>
+                </div>
+                <div class="info-content">
+                    <div class="info-row">
+                        <div class="info-label">위치:</div>
+                        <div class="info-value">황푸강 서안 일대</div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">특징:</div>
+                        <div class="info-value">
+                            • 서구 식 고전 건축물 단지<br>
+                            • 푸둥 신구 전망 최고<br>
+                            • 야경 사진 명소
+                        </div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">유모차:</div>
+                        <div class="info-value">
+                            <span class="badge badge-success">전 구간 평탄</span>
+                            보도 넓음
+                        </div>
+                    </div>
+                    <div class="tip-section">
+                        <div class="tip-title">🌆 방문 팁</div>
+                        <div class="tip-item">• 야경 촬영은 일몰 후 최적</div>
+                        <div class="tip-item">• The People 카페에서 내려다보는 와이탄 전망 추천</div>
                     </div>
                 </div>
             </div>
@@ -843,25 +940,29 @@
                         <div class="menu-item">• 유단 (유자 닭) - 부드러운 찜닭</div>
                         <div class="menu-item">• 차오서카이수 (청경채 볶음)</div>
                     </div>
+
                     <div class="tip-section">
                         <div class="tip-title">👶 유아 동반 팁</div>
-                        <div class="tip-item">• 매운맛 없음, 간도 적당 → 아기와 공유 가능한 반찬 있음</div>
-                        <div class="tip-item">• 의자에 유아용 보조 시트 없음 → 아기를 안고 식사 필요</div>
-                        <div class="tip-item">• 혼잡하므로 16:00 입장이 매우 현명한 선택 ✅</div>
+                        <div class="tip-item">• "不要辣" 필수, 보조의자 없음</div>
+                        <div class="tip-item">• 매운맛 없음, 간도 적당</div>
+                        <div class="tip-item">• 16:00 입장이 최적</div>
                     </div>
-                    <button class="copy-btn" onclick="copyText('老吉士酒家淮海路店')" style="width: 100%; margin-top: 15px; padding: 12px;">DiDi 주소 복사</button>
+                    <div style="display: flex; gap: 10px; margin-top: 15px;">
+                        <button class="copy-btn" onclick="copyText('老吉士酒家淮海路店')" style="flex: 1; padding: 12px;">DiDi 복사</button>
+                        <button class="copy-btn" onclick="window.open('https://www.dianping.com/shop/k175tm2mcNdosVCq', '_blank')" style="flex: 1; padding: 12px; background: #FF6B35;">Dianping</button>
+                    </div>
                 </div>
             </div>
             
             <div class="info-card">
                 <div class="info-header">
-                    <div class="info-title">타이갤러리 (泰馆)</div>
+                    <div class="info-title">타이랑 (Thai Gallery · 泰廊)</div>
                     <div class="info-subtitle">2일차 점심 - 태국 요리</div>
                 </div>
                 <div class="info-content">
                     <div class="info-row">
                         <div class="info-label">위치:</div>
-                        <div class="info-value">푸시완 가리센터 3층</div>
+                        <div class="info-value">징안공원 내</div>
                     </div>
                     <div class="info-row">
                         <div class="info-label">영업시간:</div>
@@ -873,12 +974,16 @@
                         <div class="menu-item">• 그린 커리</div>
                         <div class="menu-item">• 팟타이</div>
                     </div>
+
                     <div class="tip-section">
                         <div class="tip-title">👶 유아 동반 팁</div>
-                        <div class="tip-item">• "不要辣" 요청 시 완전 무맛 아님, 약간 향만 남음</div>
-                        <div class="tip-item">• 의자 넓고 통로 여유 있음 → 유모차 OK</div>
+                        <div class="tip-item">• "不要辣" 요청 시 무맛 가능</div>
+                        <div class="tip-item">• 징안공원 동문(난징시루 측)으로 입장</div>
                     </div>
-                    <button class="copy-btn" onclick="copyText('泰馆嘉里中心店')" style="width: 100%; margin-top: 15px; padding: 12px;">DiDi 주소 복사</button>
+                    <div style="display: flex; gap: 10px; margin-top: 15px;">
+                        <button class="copy-btn" onclick="copyText('泰廊静安公园店')" style="flex: 1; padding: 12px;">DiDi 복사</button>
+                        <button class="copy-btn" onclick="window.open('https://www.dianping.com/shop/k3ZbV7SZiJdS33o8', '_blank')" style="flex: 1; padding: 12px; background: #FF6B35;">Dianping</button>
+                    </div>
                 </div>
             </div>
             
@@ -913,13 +1018,13 @@
             
             <div class="info-card">
                 <div class="info-header">
-                    <div class="info-title">디앤더더 (点都德)</div>
+                    <div class="info-title">디앤더더 (点都德) - 백옥란광장점</div>
                     <div class="info-subtitle">2일차 저녁 - 광둥 딤섬</div>
                 </div>
                 <div class="info-content">
                     <div class="info-row">
                         <div class="info-label">위치:</div>
-                        <div class="info-value">난징서로 신세계 백화점 6층</div>
+                        <div class="info-value">백옥란광장 1층 (The People 카페와 동일 건물)</div>
                     </div>
                     <div class="info-row">
                         <div class="info-label">영업시간:</div>
@@ -931,12 +1036,16 @@
                         <div class="menu-item">• 새우 하가우</div>
                         <div class="menu-item">• 찹쌀 찐 닭</div>
                     </div>
+
                     <div class="tip-section">
                         <div class="tip-title">👶 유아 동반 팁</div>
-                        <div class="tip-item">• 딤섬은 따뜻하게 제공 → 아기 음식으로 활용 가능</div>
-                        <div class="tip-item">• 유모차 입장 가능, 단 주말 저녁은 대기 필요 → 17:30 입장이 최적</div>
+                        <div class="tip-item">• 유모차 입장 가능, 따뜻한 찐요리</div>
+                        <div class="tip-item">• 15:30 입장이 최적</div>
                     </div>
-                    <button class="copy-btn" onclick="copyText('点都德新世界店')" style="width: 100%; margin-top: 15px; padding: 12px;">DiDi 주소 복사</button>
+                    <div style="display: flex; gap: 10px; margin-top: 15px;">
+                        <button class="copy-btn" onclick="copyText('点都德(白玉兰广场店)')" style="flex: 1; padding: 12px;">DiDi 복사</button>
+                        <button class="copy-btn" onclick="window.open('https://www.dianping.com/shop/G3If7J1ew2lHoK7c', '_blank')" style="flex: 1; padding: 12px; background: #FF6B35;">Dianping</button>
+                    </div>
                 </div>
             </div>
             
@@ -960,10 +1069,13 @@
                         <div class="menu-item">• 궁보지딩</div>
                         <div class="menu-item">• 물냉면 (사천식)</div>
                     </div>
+                    <div class="info-row">
+                        <div class="info-label">Dianping ID:</div>
+                        <div class="info-value">10322567</div>
+                    </div>
                     <div class="tip-section">
                         <div class="tip-title">👶 유아 동반 팁</div>
-                        <div class="tip-item">• "不要辣, 不要麻" 요청 시 매운맛·마비맛 제거 가능</div>
-                        <div class="tip-item">• 기본 반찬도 매움 → 따로 주문 시 무맛 요청 필수</div>
+                        <div class="tip-item">• "不要辣, 不要麻" 필수</div>
                     </div>
                     <button class="copy-btn" onclick="copyText('孔雀川菜新天地店')" style="width: 100%; margin-top: 15px; padding: 12px;">DiDi 주소 복사</button>
                 </div>
@@ -989,13 +1101,16 @@
                         <div class="menu-item">• 흑임자 경단</div>
                         <div class="menu-item">• 벚꽃 젤리</div>
                     </div>
+
                     <div class="tip-section">
                         <div class="tip-title">👶 유아 동반 팁</div>
-                        <div class="tip-item">• 매운맛 전혀 없음, 디저트 중심</div>
+                        <div class="tip-item">• 매운맛 없음, 디저트 중심</div>
                         <div class="tip-item">• 조용하고 실내 넓음, 유모차 OK</div>
-                        <div class="tip-item">• 아기용 따뜻한 물 제공 가능</div>
                     </div>
-                    <button class="copy-btn" onclick="copyText('元古雲境新天地店')" style="width: 100%; margin-top: 15px; padding: 12px;">DiDi 주소 복사</button>
+                    <div style="display: flex; gap: 10px; margin-top: 15px;">
+                        <button class="copy-btn" onclick="copyText('元古雲境新天地店')" style="flex: 1; padding: 12px;">DiDi 복사</button>
+                        <button class="copy-btn" onclick="window.open('https://www.dianping.com/shop/la91aGGYxa1SC9S6', '_blank')" style="flex: 1; padding: 12px; background: #FF6B35;">Dianping</button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1017,13 +1132,21 @@
                     </div>
                     <div class="info-row">
                         <div class="info-label">특징:</div>
-                        <div class="info-value">실험실 컨셉, 3구역, 넓음</div>
+                        <div class="info-value">실험실 컨셉 카페 (테마 카페)</div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">로스터리:</div>
+                        <div class="info-value">❌ 비로스터리</div>
                     </div>
                     <div class="info-row">
                         <div class="info-label">유모차:</div>
-                        <div class="info-value"><span class="badge badge-success">✅ 가능</span></div>
+                        <div class="info-value"><span class="badge badge-success">✅ 넓음</span></div>
                     </div>
-                    <button class="copy-btn" onclick="copyText('Captain George风味博物馆')" style="width: 100%; margin-top: 15px; padding: 12px;">DiDi 주소 복사</button>
+
+                    <div style="display: flex; gap: 10px; margin-top: 15px;">
+                        <button class="copy-btn" onclick="copyText('Captain George风味博物馆')" style="flex: 1; padding: 12px;">DiDi 복사</button>
+                        <button class="copy-btn" onclick="window.open('https://www.dianping.com/shop/H4TMU8DDCW7L2AfN', '_blank')" style="flex: 1; padding: 12px; background: #FF6B35;">Dianping</button>
+                    </div>
                 </div>
             </div>
             
@@ -1046,10 +1169,58 @@
                         <div class="info-value">징안사 인근, 조용, 창가 자리</div>
                     </div>
                     <div class="info-row">
-                        <div class="info-label">유모차:</div>
-                        <div class="info-value"><span class="badge badge-success">✅ 가능</span></div>
+                        <div class="info-label">로스터리:</div>
+                        <div class="info-value">✅ 자체 로스팅</div>
                     </div>
-                    <button class="copy-btn" onclick="copyText('D. ORINO咖啡')" style="width: 100%; margin-top: 15px; padding: 12px;">DiDi 주소 복사</button>
+                    <div class="info-row">
+                        <div class="info-label">유모차:</div>
+                        <div class="info-value"><span class="badge badge-success">✅ 넓음</span></div>
+                    </div>
+
+                    <div style="display: flex; gap: 10px; margin-top: 15px;">
+                        <button class="copy-btn" onclick="copyText('D. ORINO咖啡')" style="flex: 1; padding: 12px;">DiDi 복사</button>
+                        <button class="copy-btn" onclick="window.open('https://www.dianping.com/shop/H5NU3TYNj5z2UtE4', '_blank')" style="flex: 1; padding: 12px; background: #FF6B35;">Dianping</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="info-card">
+                <div class="cafe-header">
+                    <div class="info-title">LuckyDraw Coffee</div>
+                    <div class="info-subtitle">2일차 - 싱글 오리진 로스터리</div>
+                </div>
+                <div class="info-content">
+                    <div class="info-row">
+                        <div class="info-label">위치:</div>
+                        <div class="info-value">베이징시루 780호</div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">운영시간:</div>
+                        <div class="info-value">09:00-19:00</div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">특징:</div>
+                        <div class="info-value">자체 로스팅, 싱글 오리진</div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">로스터리:</div>
+                        <div class="info-value">✅ 싱글 오리진</div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">유모차:</div>
+                        <div class="info-value"><span class="badge badge-warning">⚠️ 접이식만</span> (내부 협소)</div>
+                    </div>
+
+                    <div class="tip-section">
+                        <div class="tip-title">👶 이용 팁</div>
+                        <div class="tip-item">• 기저귀/수유는 IAPM에서 사전 해결</div>
+                        <div class="tip-item">• 유모차는 입구 옆에 배치, 내부에서는 아기 안고 이용</div>
+                        <div class="tip-item">• 주말 10:00 이전 방문 권장</div>
+                    </div>
+                    <div style="display: flex; gap: 10px; margin-top: 15px;">
+                        <button class="copy-btn" onclick="copyText('LuckyDraw Coffee北京西路店')" style="flex: 1; padding: 12px;">DiDi 복사</button>
+                        <button class="copy-btn" onclick="window.open('https://www.dianping.com/shop/k1S8UDo60FhHs40F', '_blank')" style="flex: 1; padding: 12px; background: #FF6B35;">Dianping</button>
+                    </div>
                 </div>
             </div>
             
@@ -1061,7 +1232,7 @@
                 <div class="info-content">
                     <div class="info-row">
                         <div class="info-label">위치:</div>
-                        <div class="info-value">백옥란 광장 48층</div>
+                        <div class="info-value">동대명로 501호</div>
                     </div>
                     <div class="info-row">
                         <div class="info-label">운영시간:</div>
@@ -1072,16 +1243,24 @@
                         <div class="info-value">48층 전망, 푸둥 야경, 넓은 실내</div>
                     </div>
                     <div class="info-row">
-                        <div class="info-label">유모차:</div>
-                        <div class="info-value"><span class="badge badge-success">✅ 가능</span></div>
+                        <div class="info-label">로스터리:</div>
+                        <div class="info-value">❌ 비로스터리 (뷰 카페)</div>
                     </div>
-                    <button class="copy-btn" onclick="copyText('东大名路501号')" style="width: 100%; margin-top: 15px; padding: 12px;">DiDi 주소 복사</button>
+                    <div class="info-row">
+                        <div class="info-label">유모차:</div>
+                        <div class="info-value"><span class="badge badge-success">✅ 48층 넓음</span></div>
+                    </div>
+
+                    <div style="display: flex; gap: 10px; margin-top: 15px;">
+                        <button class="copy-btn" onclick="copyText('东大名路501号')" style="flex: 1; padding: 12px;">DiDi 복사</button>
+                        <button class="copy-btn" onclick="window.open('https://www.dianping.com/shop/GaMcpGbpMxbQq8nq', '_blank')" style="flex: 1; padding: 12px; background: #FF6B35;">Dianping</button>
+                    </div>
                 </div>
             </div>
             
             <div class="info-card">
                 <div class="cafe-header">
-                    <div class="info-title">Polux Bistro</div>
+                    <div class="info-title">Polux by Paul Pairet</div>
                     <div class="info-subtitle">3일차 - 프렌치 브런치</div>
                 </div>
                 <div class="info-content">
@@ -1098,10 +1277,205 @@
                         <div class="info-value">프렌치 브런치, 가족 친화적</div>
                     </div>
                     <div class="info-row">
-                        <div class="info-label">유모차:</div>
-                        <div class="info-value"><span class="badge badge-success">✅ 가능</span></div>
+                        <div class="info-label">로스터리:</div>
+                        <div class="info-value">❌ 비로스터리 (비스트로)</div>
                     </div>
-                    <button class="copy-btn" onclick="copyText('Polux Bistro')" style="width: 100%; margin-top: 15px; padding: 12px;">DiDi 주소 복사</button>
+                    <div class="info-row">
+                        <div class="info-label">유모차:</div>
+                        <div class="info-value"><span class="badge badge-success">✅ 넓음</span></div>
+                    </div>
+
+                    <div style="display: flex; gap: 10px; margin-top: 15px;">
+                        <button class="copy-btn" onclick="copyText('Polux by Paul Pairet')" style="flex: 1; padding: 12px;">DiDi 복사</button>
+                        <button class="copy-btn" onclick="window.open('https://www.dianping.com/shop/H25LX6KqbzAWVRNl', '_blank')" style="flex: 1; padding: 12px; background: #FF6B35;">Dianping</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div id="hotel" class="tab-content">
+            <div class="info-card">
+                <div class="info-header">
+                    <div class="info-title">아투어 호텔 상하이 징안 템플</div>
+                    <div class="info-subtitle">Atour Hotel Jing'an Temple Nanjing West Road</div>
+                </div>
+                <div class="info-content">
+                    <div class="info-row">
+                        <div class="info-label">주소:</div>
+                        <div class="info-value">No. 839 Yan'an Middle Road, Jing'an District, Shanghai</div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">오픈 연도:</div>
+                        <div class="info-value">2024년 (신규 오픈)</div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">교통:</div>
+                        <div class="info-value">
+                            징안스 역 630m, 난징시루 역 730m
+                        </div>
+                    </div>
+                    
+                    <div class="menu-section">
+                        <div class="menu-title">🏨 객실 특징</div>
+                        <div class="menu-item">• 옥토넓 가족 테마 스위트룸</div>
+                        <div class="menu-item">• 슈페리어 퀸룸</div>
+                        <div class="menu-item">• 이그제큐티브 트윈룸</div>
+                        <div class="menu-item">• 모든 객실: 무료 Wi-Fi, 에어컨, 미니바 구비</div>
+                    </div>
+                    
+                    <div class="menu-section">
+                        <div class="menu-title">🍽️ 주요 시설</div>
+                        <div class="menu-item">• 무료 헬스장</div>
+                        <div class="menu-item">• 무료 전용 주차장</div>
+                        <div class="menu-item">• EV 충전소</div>
+                        <div class="menu-item">• 24시간 프런트 데스크</div>
+                        <div class="menu-item">• 무료 짐 보관, 도서관, 식당</div>
+                    </div>
+                    
+                    <div class="menu-section">
+                        <div class="menu-title">🍳 조식 정보</div>
+                        <div class="menu-item">• 뛰페 형식의 중식 조식</div>
+                        <div class="menu-item">• 운영 시간: 월-일 07:30-11:00</div>
+                        <div class="menu-item">• 다양한 메뉴로 호평</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="info-card">
+                <div class="attraction-header">
+                    <div class="info-title">👍 실제 투숙객 후기</div>
+                    <div class="info-subtitle">생생한 후기를 통해 확인한 장점들</div>
+                </div>
+                <div class="info-content">
+                    <div class="tip-section">
+                        <div class="tip-title">✨ 청결도와 신규 시설</div>
+                        <div class="tip-item">• "객실은 매우 깨끗하고 깔끔했습니다"</div>
+                        <div class="tip-item">• "방 상태가 아주 좋았고, 냄새도 전혀 없었어요"</div>
+                        <div class="tip-item">• 2024년 오픈으로 모든 시설이 새것 같은 느낌</div>
+                    </div>
+                    
+                    <div class="tip-section">
+                        <div class="tip-title">📍 탁월한 위치</div>
+                        <div class="tip-item">• 정안사, 케리센터 등 주요 관광지와 가까움</div>
+                        <div class="tip-item">• "위치도 정말 좋았어요. 근처의 화이하이중루, 창수루, 징안쓰 같은 인기 있는 거리들로 이동하기에 매우 편리했습니다"</div>
+                    </div>
+                    
+                    <div class="tip-section">
+                        <div class="tip-title">🍳 풍부한 조식</div>
+                        <div class="tip-item">• "조식도 다양 깔끔 맛있고"</div>
+                        <div class="tip-item">• 다양한 메뉴의 조식으로 편리한 아침 식사</div>
+                    </div>
+                    
+                    <div class="tip-section">
+                        <div class="tip-title">🧠 추가 편의 서비스</div>
+                        <div class="tip-item">• 무료 세탁 서비스 제공</div>
+                        <div class="tip-item">• "세탁건조기 사용이 무료라 비오는 날 유용하게 잘 쓰었음"</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="general-tip-card">
+                <div class="general-tip-title">💡 이용 팁</div>
+                <div class="general-tip-item">• <strong>교통 접근성:</strong> 야난중로에 위치. 일부 택시 기사님들이 호텔 진입로가 좋아 찾기 어려워할 수 있으니 미리 주소 확인 권장</div>
+                <div class="general-tip-item">• <strong>객실 선택:</strong> 가족 여행객을 위한 '옥토넓 가족 테마 스위트룸' 마련</div>
+                <div class="general-tip-item">• <strong>언어:</strong> 프런트에서는 영어와 중국어(표준 중국어) 서비스 제공</div>
+            </div>
+        </div>
+        
+        <div id="emergency" class="tab-content">
+            <div class="info-card">
+                <div class="info-header" style="background: linear-gradient(45deg, #DC3545, #C82333);">
+                    <div class="info-title">🏭 상하이 주요 병원 리스트</div>
+                    <div class="info-subtitle">비교적 접근성이 좋고, 한국어 예약 또는 영어 진료가 가능한 병원들</div>
+                </div>
+                <div class="info-content">
+                    <div class="info-row">
+                        <div class="info-label">교통대부속 동인병원:</div>
+                        <div class="info-value">
+                            24시간 응급실 운영, 통역 서비스 가능 (유료)<br>
+                            <strong>한국어 예약:</strong> +86-21-6290-1494<br>
+                            <strong>주소:</strong> 1111 Xianxialu, Changningqu / 상하이시 창닝구 샨샤로 1111호
+                        </div>
+                    </div>
+                    
+                    <div class="info-row">
+                        <div class="info-label">민항구 중의병원:</div>
+                        <div class="info-value">
+                            평일/토요일 진료<br>
+                            <strong>한국어 예약:</strong> +86-21-5117-3569<br>
+                            <strong>주소:</strong> 3071 Hechuanlu, Minhangqu / 상하이시 민항구 허춘로 3071호
+                        </div>
+                    </div>
+                    
+                    <div class="info-row">
+                        <div class="info-label">상하이홉차오 예병원:</div>
+                        <div class="info-value">
+                            평일/토요일 진료<br>
+                            <strong>전화 문의:</strong> +86-21-6401-2110<br>
+                            <strong>주소:</strong> 2181 Hongmeilu, Minhangqu / 상하이시 민항구 홉메이로 2181호
+                        </div>
+                    </div>
+                    
+                    <div class="info-row">
+                        <div class="info-label">복단대부속 중산병원:</div>
+                        <div class="info-value">
+                            내과, 심혈관, 산부인과, 소아과 등<br>
+                            <strong>전화 문의:</strong> +86-21-6404-1990<br>
+                            <strong>주소:</strong> 180 Fenglin Rd, Xuhui Qu / 상하이시 슐후이구 펑린로 180호
+                        </div>
+                    </div>
+                    
+                    <div class="info-row">
+                        <div class="info-label">교통대부속 제6인민병원:</div>
+                        <div class="info-value">
+                            정형외과<br>
+                            <strong>전화 문의:</strong> +86-21-6436-9181<br>
+                            <strong>주소:</strong> Yishan Rd, TianLin, Xuhui Qu / 상하이시 슐후이구 이산로 (통린 지역)
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="general-tip-card" style="background: linear-gradient(45deg, #DC3545, #C82333);">
+                <div class="general-tip-title">🚨 긴급 상황 시 연락처</div>
+                <div class="general-tip-item">• <strong>앱뷸런스 호출:</strong> 120 (매우 급한 상황)</div>
+                <div class="general-tip-item">• 통화 시 영어나 한국어로 말한 후, 가능하면 주변에 통역을 도와줄 사람을 찾으세요</div>
+            </div>
+            
+            <div class="general-tip-card" style="background: linear-gradient(45deg, #17A2B8, #138496);">
+                <div class="general-tip-title">📞 의료 상담 서비스</div>
+                <div class="general-tip-item">• <strong>한국 소방청 응급의료 상담서비스:</strong></div>
+                <div class="general-tip-item">• 카카오톡: '소방청 응급의료 상담서비스' 채널 추가</div>
+                <div class="general-tip-item">• 전화: +82-44-320-0119</div>
+                <div class="general-tip-item">• 전문 의료관계자의 상담을 받을 수 있습니다</div>
+            </div>
+            
+            <div class="info-card">
+                <div class="attraction-header" style="background: linear-gradient(45deg, #28A745, #1E7E34);">
+                    <div class="info-title">💼 병원 이용 팁</div>
+                    <div class="info-subtitle">여행지에서 아플 때 도움이 되는 정보</div>
+                </div>
+                <div class="info-content">
+                    <div class="tip-section">
+                        <div class="tip-title">🎒 꼭 챙겨야 할 것</div>
+                        <div class="tip-item">• 병원 방문 시 여권과 해외 여행 보험 증서를 꼭 지참하세요</div>
+                        <div class="tip-item">• 중국의 대형 병원은 진료 절차가 복잡하고 대기 시간이 길 수 있습니다</div>
+                        <div class="tip-item">• 컨디션이 많이 안 좋을 때는 가능한 보호자를 동행하는 것이 좋습니다</div>
+                    </div>
+                    
+                    <div class="tip-section">
+                        <div class="tip-title">💰 치료비 및 보험</div>
+                        <div class="tip-item">• 상하이의 주요 종합병원은 대부분 365일 24시간 진료를 합니다</div>
+                        <div class="tip-item">• 치료비는 한국과 비슷하거나 조금 더 비쌀 수 있습니다</div>
+                        <div class="tip-item">• 해외 여행 보험에 미리 가입해 두는 것이 좋습니다</div>
+                    </div>
+                    
+                    <div class="tip-section">
+                        <div class="tip-title">🇨🇳 주상하이 대한민국 총영사관</div>
+                        <div class="tip-item">• <strong>대표전화(근무시간 중):</strong> +86-21-6295-5000</div>
+                        <div class="tip-item">• <strong>긴급연락전화(사건사고 등 긴급상황, 24시간):</strong> +86-138-1650-9503(4)</div>
+                        <div class="tip-item">• <strong>영사콜센터(서울, 24시간):</strong> +82-(0)2-3210-0404</div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1109,14 +1483,15 @@
         <div id="tips" class="tab-content">
             <div class="general-tip-card">
                 <div class="general-tip-title">📱 필수 앱</div>
-                <div class="general-tip-item">• <strong>DiDi:</strong> "XL" 차량 선택 → 유모차 2대 가능</div>
-                <div class="general-tip-item">• <strong>Dianping:</strong> 식당 리뷰·메뉴 확인 필수 (중국어 이름 복사)</div>
+                <div class="general-tip-item">• <strong>DiDi:</strong> 항상 "XL" 차량 선택 → 유모차 2대 가능</div>
+                <div class="general-tip-item">• <strong>Dianping:</strong> WeChat → "大众点评" → ID 검색</div>
             </div>
             
             <div class="general-tip-card">
                 <div class="general-tip-title">🌶️ 매운맛 조절</div>
                 <div class="general-tip-item">• <strong>"不要辣"</strong> = 안 매움</div>
                 <div class="general-tip-item">• <strong>"不要麻"</strong> = 마비맛 없음 (사천 요리용)</div>
+                <div class="general-tip-item">• 모든 중국어 목적지 복사 → 붙여넣기</div>
             </div>
             
             <div class="general-tip-card">
@@ -1128,7 +1503,6 @@
             
             <div class="general-tip-card">
                 <div class="general-tip-title">⏰ 토요일 주의사항</div>
-                <div class="general-tip-item">• <strong>예원:</strong> 09:00 이전 도착</div>
                 <div class="general-tip-item">• <strong>공항:</strong> 13:00 이전 출발</div>
                 <div class="general-tip-item">• 교통 혼잡 대비 여유시간 확보</div>
             </div>
@@ -1136,8 +1510,8 @@
             <div class="general-tip-card">
                 <div class="general-tip-title">👶 아기 동반 팁</div>
                 <div class="general-tip-item">• 6개월 아기 - 식사 불가</div>
-                <div class="general-tip-item">• 유모차 필수 지참</div>
-                <div class="general-tip-item">• 모든 카페와 식당 유모차 OK</div>
+                <div class="general-tip-item">• 접이식 유모차 필수 지참</div>
+                <div class="general-tip-item">• 모든 코스 유모차 친화적 또는 조건부 명시</div>
                 <div class="general-tip-item">• 의자에 유아용 보조 시트 대부분 없음</div>
             </div>
             
