@@ -1,0 +1,1483 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>상해 여행 가이드</title>
+    
+    <!-- PWA 메타 태그 -->
+    <meta name="description" content="상해 2박3일 가족 여행 완전 가이드 - 6개월 아기 동반">
+    <meta name="theme-color" content="#2196F3">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="상해여행">
+    <meta name="mobile-web-app-capable" content="yes">
+    
+    <!-- Manifest -->
+    <link rel="manifest" href="manifest.json">
+    
+    <!-- 아이콘 -->
+    <link rel="icon" type="image/svg+xml" sizes="32x32" href="icon-32.svg">
+    <link rel="icon" type="image/svg+xml" sizes="16x16" href="icon-16.svg">
+    <link rel="apple-touch-icon" sizes="180x180" href="icon-192.svg">
+    <link rel="apple-touch-icon" sizes="152x152" href="icon-152.svg">
+    <link rel="apple-touch-icon" sizes="144x144" href="icon-144.svg">
+    <link rel="apple-touch-icon" sizes="120x120" href="icon-128.svg">
+    <link rel="apple-touch-icon" sizes="114x114" href="icon-128.svg">
+    <link rel="apple-touch-icon" sizes="76x76" href="icon-96.svg">
+    <link rel="apple-touch-icon" sizes="72x72" href="icon-72.svg">
+    <link rel="apple-touch-icon" sizes="60x60" href="icon-72.svg">
+    <link rel="apple-touch-icon" sizes="57x57" href="icon-72.svg">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #333;
+        }
+        
+        .container {
+            max-width: 100%;
+            margin: 0 auto;
+            background: white;
+            min-height: 100vh;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .header h1 {
+            font-size: 1.5rem;
+            margin-bottom: 5px;
+        }
+        
+        .header .subtitle {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+        
+        .nav-tabs {
+            display: flex;
+            background: #f8f9fa;
+            border-bottom: 1px solid #dee2e6;
+            overflow-x: auto;
+        }
+        
+        .nav-tab {
+            flex: 1;
+            padding: 15px 10px;
+            text-align: center;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 0.9rem;
+            white-space: nowrap;
+            transition: all 0.3s;
+            min-height: 44px;
+        }
+        
+        .nav-tab.active {
+            background: #2196F3;
+            color: white;
+        }
+        
+        .tab-content {
+            display: none;
+            padding: 20px;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        .day-card {
+            background: white;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        .day-header {
+            background: linear-gradient(45deg, #FF6B6B, #4ECDC4);
+            color: white;
+            padding: 15px 20px;
+            font-weight: bold;
+        }
+        
+        .schedule-item {
+            padding: 15px 20px;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        
+        .schedule-item:last-child {
+            border-bottom: none;
+        }
+        
+        .schedule-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        
+        .time {
+            background: #e3f2fd;
+            color: #1976d2;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            min-width: 80px;
+            text-align: center;
+            margin-right: 15px;
+        }
+        
+        .activity-title {
+            font-weight: bold;
+            font-size: 1.1rem;
+            flex: 1;
+        }
+        
+        .copy-btn {
+            background: #4CAF50;
+            color: white;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 15px;
+            font-size: 0.7rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: bold;
+            min-height: 32px;
+            touch-action: manipulation;
+        }
+        
+        .copy-btn:hover {
+            background: #45a049;
+            transform: translateY(-1px);
+        }
+        
+        .activity-details {
+            margin-left: 95px;
+            color: #666;
+            font-size: 0.9rem;
+            line-height: 1.4;
+        }
+        
+        .location-info {
+            background: #f8f9fa;
+            padding: 10px;
+            border-radius: 8px;
+            margin-top: 8px;
+        }
+        
+        .info-card {
+            background: white;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        .info-header {
+            background: linear-gradient(45deg, #FF9800, #FF5722);
+            color: white;
+            padding: 15px 20px;
+        }
+        
+        .attraction-header {
+            background: linear-gradient(45deg, #9C27B0, #673AB7);
+            color: white;
+            padding: 15px 20px;
+        }
+        
+        .cafe-header {
+            background: linear-gradient(45deg, #8BC34A, #4CAF50);
+            color: white;
+            padding: 15px 20px;
+        }
+        
+        .info-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .info-subtitle {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+        
+        .info-content {
+            padding: 20px;
+        }
+        
+        .info-row {
+            display: flex;
+            margin-bottom: 12px;
+            align-items: flex-start;
+        }
+        
+        .info-label {
+            font-weight: bold;
+            color: #666;
+            min-width: 80px;
+            margin-right: 10px;
+        }
+        
+        .info-value {
+            flex: 1;
+            line-height: 1.4;
+        }
+        
+        .menu-section {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+        
+        .menu-title {
+            font-weight: bold;
+            margin-bottom: 8px;
+            color: #333;
+        }
+        
+        .menu-item {
+            margin-bottom: 5px;
+            font-size: 0.9rem;
+        }
+        
+        .tip-section {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+        
+        .tip-title {
+            font-weight: bold;
+            color: #856404;
+            margin-bottom: 8px;
+        }
+        
+        .tip-item {
+            margin-bottom: 5px;
+            font-size: 0.9rem;
+            color: #856404;
+        }
+        
+        .badge {
+            display: inline-block;
+            padding: 3px 8px;
+            border-radius: 12px;
+            font-size: 0.7rem;
+            font-weight: bold;
+            margin-right: 5px;
+        }
+        
+        .badge-success {
+            background: #d4edda;
+            color: #155724;
+        }
+        
+        .badge-warning {
+            background: #fff3cd;
+            color: #856404;
+        }
+        
+        .badge-info {
+            background: #d1ecf1;
+            color: #0c5460;
+        }
+        
+        .general-tip-card {
+            background: linear-gradient(45deg, #FFC107, #FF9800);
+            color: white;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin-bottom: 15px;
+        }
+        
+        .general-tip-title {
+            font-weight: bold;
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+        
+        .general-tip-item {
+            margin-bottom: 8px;
+            font-size: 0.9rem;
+        }
+        
+        .install-btn {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: bold;
+            backdrop-filter: blur(10px);
+        }
+        
+        .install-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            border-color: rgba(255, 255, 255, 0.5);
+            transform: translateY(-1px);
+        }
+        
+        .pwa-status {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #4CAF50;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            z-index: 1000;
+            display: none;
+        }
+        
+        .offline-indicator {
+            background: #FF9800;
+            color: white;
+            padding: 5px 15px;
+            text-align: center;
+            font-size: 0.8rem;
+            display: none;
+        }
+        
+        @media (max-width: 480px) {
+            .header {
+                padding: 15px;
+            }
+            
+            .header h1 {
+                font-size: 1.3rem;
+            }
+            
+            .nav-tab {
+                padding: 12px 8px;
+                font-size: 0.8rem;
+            }
+            
+            .tab-content {
+                padding: 15px;
+            }
+            
+            .copy-btn {
+                padding: 8px 12px;
+                font-size: 0.8rem;
+                min-height: 36px;
+            }
+            
+            .schedule-item {
+                padding: 12px 15px;
+            }
+            
+            .time {
+                min-width: 70px;
+                font-size: 0.75rem;
+                margin-right: 10px;
+            }
+            
+            .activity-details {
+                margin-left: 85px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="offline-indicator" id="offlineIndicator">
+        📶 오프라인 모드 - 저장된 데이터를 사용 중입니다
+    </div>
+    
+    <div class="container">
+        <div class="header">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+                <div>
+                    <h1>🌸 상해 2박3일 가족여행</h1>
+                    <div class="subtitle">2025년 10월 16일-18일 | 6개월 아기 동반 | 유모차 필수</div>
+                </div>
+                <button id="installBtn" class="install-btn" style="display: none;">
+                    📱 앱 설치
+                </button>
+            </div>
+        </div>
+        
+        <div class="nav-tabs">
+            <button class="nav-tab active" onclick="showTab('schedule')">📅 일정</button>
+            <button class="nav-tab" onclick="showTab('attractions')">🏛️ 관광지</button>
+            <button class="nav-tab" onclick="showTab('restaurants')">🍽️ 식당</button>
+            <button class="nav-tab" onclick="showTab('cafes')">☕ 카페</button>
+            <button class="nav-tab" onclick="showTab('tips')">💡 팁</button>
+        </div>
+        
+        <div id="schedule" class="tab-content active">
+            <div class="day-card">
+                <div class="day-header">1일차 - 10월 16일 (목요일)</div>
+                
+                <div class="schedule-item">
+                    <div class="schedule-header">
+                        <div class="time">13:00</div>
+                        <div class="activity-title">✈️ 훵차오공항 T2 도착</div>
+                    </div>
+                    <div class="activity-details">MU512편 도착</div>
+                </div>
+                
+                <div class="schedule-item">
+                    <div class="schedule-header">
+                        <div class="time">13:15</div>
+                        <div class="activity-title">🚖 공항 → 호텔</div>
+                        <button class="copy-btn" onclick="copyText('静安南京西路亚朵酒店')">복사</button>
+                    </div>
+                    <div class="activity-details">
+                        아투어 호텔 (징안사) 체크인
+                        <div class="location-info">
+                            <strong>DiDi:</strong> 静安南京西路亚朵酒店
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="schedule-item">
+                    <div class="schedule-header">
+                        <div class="time">14:00</div>
+                        <div class="activity-title">☕ Captain George</div>
+                        <button class="copy-btn" onclick="copyText('Captain George风味博物馆')">복사</button>
+                    </div>
+                    <div class="activity-details">
+                        실험실 컨셉 카페 (태원로 236호)
+                        <span class="badge badge-success">유모차 OK</span>
+                        <span class="badge badge-info">10:00-20:00</span>
+                    </div>
+                </div>
+                
+                <div class="schedule-item">
+                    <div class="schedule-header">
+                        <div class="time">15:00</div>
+                        <div class="activity-title">🚶 우캉로 & 우캉멘션</div>
+                        <button class="copy-btn" onclick="copyText('武康路与淮海中路交叉口')">복사</button>
+                    </div>
+                    <div class="activity-details">
+                        상하이 대표 감성 거리 산책
+                        <span class="badge badge-success">유모차 산책 최적</span>
+                    </div>
+                </div>
+                
+                <div class="schedule-item">
+                    <div class="schedule-header">
+                        <div class="time">16:00</div>
+                        <div class="activity-title">🍽️ 라오지스 주자</div>
+                        <button class="copy-btn" onclick="copyText('老吉士酒家淮海路店')">복사</button>
+                    </div>
+                    <div class="activity-details">
+                        상하이 본토 요리 (화이하이중로 473호)
+                        <span class="badge badge-warning">매운맛 조절 가능</span>
+                    </div>
+                </div>
+                
+                <div class="schedule-item">
+                    <div class="schedule-header">
+                        <div class="time">17:30</div>
+                        <div class="activity-title">☕ D. ORINO Coffee</div>
+                        <button class="copy-btn" onclick="copyText('D. ORINO咖啡')">복사</button>
+                    </div>
+                    <div class="activity-details">
+                        조용하고 넓은 카페 (강딩로 833호)
+                        <span class="badge badge-success">유모차 OK</span>
+                        <span class="badge badge-info">09:00-19:00</span>
+                    </div>
+                </div>
+                
+                <div class="schedule-item">
+                    <div class="schedule-header">
+                        <div class="time">18:10</div>
+                        <div class="activity-title">🚖 호텔 복귀</div>
+                        <button class="copy-btn" onclick="copyText('静安南京西路亚朵酒店')">복사</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="day-card">
+                <div class="day-header">2일차 - 10월 17일 (금요일)</div>
+                
+                <div class="schedule-item">
+                    <div class="schedule-header">
+                        <div class="time">09:00</div>
+                        <div class="activity-title">🏯 예원 (豫园)</div>
+                        <button class="copy-btn" onclick="copyText('豫园')">복사</button>
+                    </div>
+                    <div class="activity-details">
+                        명나라 정원 관람 (황푸구)
+                        <span class="badge badge-warning">09:00 이전 도착 권장</span>
+                        <span class="badge badge-success">유모차 OK</span>
+                    </div>
+                </div>
+                
+                <div class="schedule-item">
+                    <div class="schedule-header">
+                        <div class="time">11:30</div>
+                        <div class="activity-title">🍜 점심 식사</div>
+                    </div>
+                    <div class="activity-details">
+                        <strong>선택 1:</strong> 타이갤러리 (태국 요리)
+                        <button class="copy-btn" onclick="copyText('泰馆嘉里中心店')" style="margin-left: 10px;">복사</button>
+                        <br><br>
+                        <strong>선택 2:</strong> 椿庐 (창작 중식)
+                        <button class="copy-btn" onclick="copyText('椿庐凯德晶萃店')" style="margin-left: 10px;">복사</button>
+                    </div>
+                </div>
+                
+                <div class="schedule-item">
+                    <div class="schedule-header">
+                        <div class="time">13:15</div>
+                        <div class="activity-title">🛍️ 난징동루 보행자 거리</div>
+                        <button class="copy-btn" onclick="copyText('南京东路步行街')">복사</button>
+                    </div>
+                    <div class="activity-details">
+                        쇼핑 및 산책
+                        <span class="badge badge-success">유모차 OK</span>
+                        <span class="badge badge-info">13:00-15:00 한산</span>
+                    </div>
+                </div>
+                
+                <div class="schedule-item">
+                    <div class="schedule-header">
+                        <div class="time">15:45</div>
+                        <div class="activity-title">☕ The People 카페</div>
+                        <button class="copy-btn" onclick="copyText('东大名路501号')">복사</button>
+                    </div>
+                    <div class="activity-details">
+                        48층 푸둥 야경 (백옥란 광장)
+                        <span class="badge badge-success">유모차 OK</span>
+                        <span class="badge badge-info">10:00-22:00</span>
+                    </div>
+                </div>
+                
+                <div class="schedule-item">
+                    <div class="schedule-header">
+                        <div class="time">17:30</div>
+                        <div class="activity-title">🥟 디앤더더</div>
+                        <button class="copy-btn" onclick="copyText('点都德新世界店')">복사</button>
+                    </div>
+                    <div class="activity-details">
+                        광둥 딤섬 (난징서로 신세계 백화점 6층)
+                        <span class="badge badge-success">유모차 입장 가능</span>
+                        <span class="badge badge-info">07:30-22:00</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="day-card">
+                <div class="day-header">3일차 - 10월 18일 (토요일)</div>
+                
+                <div class="schedule-item">
+                    <div class="schedule-header">
+                        <div class="time">09:00</div>
+                        <div class="activity-title">🇰🇷 임시정부 청사</div>
+                        <button class="copy-btn" onclick="copyText('上海韩国临时政府旧址')">복사</button>
+                    </div>
+                    <div class="activity-details">
+                        대한민국 임시정부 청사 (마당루 306호)
+                        <span class="badge badge-warning">여권 필수</span>
+                        <span class="badge badge-info">1층만 유모차 OK</span>
+                    </div>
+                </div>
+                
+                <div class="schedule-item">
+                    <div class="schedule-header">
+                        <div class="time">10:10</div>
+                        <div class="activity-title">☕ Polux Bistro</div>
+                        <button class="copy-btn" onclick="copyText('Polux Bistro')">복사</button>
+                    </div>
+                    <div class="activity-details">
+                        프렌치 브런치 (신천지 마루 18호)
+                        <span class="badge badge-success">유모차 OK</span>
+                        <span class="badge badge-info">10:00-22:00</span>
+                    </div>
+                </div>
+                
+                <div class="schedule-item">
+                    <div class="schedule-header">
+                        <div class="time">11:10</div>
+                        <div class="activity-title">🏛️ 신천지 산책</div>
+                    </div>
+                    <div class="activity-details">
+                        석고문 건축 감성 거리
+                        <span class="badge badge-success">유모차 OK</span>
+                        <span class="badge badge-info">11시 이전 한산</span>
+                    </div>
+                </div>
+                
+                <div class="schedule-item">
+                    <div class="schedule-header">
+                        <div class="time">11:45</div>
+                        <div class="activity-title">🍽️ 점심 식사</div>
+                    </div>
+                    <div class="activity-details">
+                        <strong>선택 1:</strong> 공작천채 (사천 요리)
+                        <button class="copy-btn" onclick="copyText('孔雀川菜新天地店')" style="margin-left: 10px;">복사</button>
+                        <br><br>
+                        <strong>선택 2:</strong> 元古雲境 (창작 중식)
+                        <button class="copy-btn" onclick="copyText('元古雲境新天地店')" style="margin-left: 10px;">복사</button>
+                    </div>
+                </div>
+                
+                <div class="schedule-item">
+                    <div class="schedule-header">
+                        <div class="time">13:00</div>
+                        <div class="activity-title">🚖 호텔 → 공항</div>
+                        <button class="copy-btn" onclick="copyText('虹桥机场2号航站楼')">복사</button>
+                    </div>
+                    <div class="activity-details">
+                        FM823편 16:55 출발
+                        <span class="badge badge-warning">13:00 이전 출발</span>
+                    </div>
+                </div>
+            </div>
+        </div>        
+
+        <div id="attractions" class="tab-content">
+            <div class="info-card">
+                <div class="attraction-header">
+                    <div class="info-title">우캉로 & 우캉멘션</div>
+                    <div class="info-subtitle">1일차 - 상하이 감성 산책 1위</div>
+                </div>
+                <div class="info-content">
+                    <div class="info-row">
+                        <div class="info-label">위치:</div>
+                        <div class="info-value">우캉로 전 구간</div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">특징:</div>
+                        <div class="info-value">
+                            • 프랑스 조계지 시절 건축물 밀집<br>
+                            • 우캉멘션: 1924년 지어진 선박 모양 아파트, 인생샷 명소
+                        </div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">유모차:</div>
+                        <div class="info-value">
+                            <span class="badge badge-success">전 구간 평탄</span>
+                            보도 넓음
+                        </div>
+                    </div>
+                    <div class="tip-section">
+                        <div class="tip-title">📸 사진 팁</div>
+                        <div class="tip-item">• 우캉멘션 앞은 항상 사람이 많음 → 옆 골목에서 찍는 게 더 예쁨</div>
+                        <div class="tip-item">• 근처에 % Arabica, Baker & Spice 등 카페 많음</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="info-card">
+                <div class="attraction-header">
+                    <div class="info-title">예원 (豫园)</div>
+                    <div class="info-subtitle">2일차 - 명나라 시대 사립 정원</div>
+                </div>
+                <div class="info-content">
+                    <div class="info-row">
+                        <div class="info-label">위치:</div>
+                        <div class="info-value">황푸구</div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">특징:</div>
+                        <div class="info-value">
+                            • 명나라 시대 사립 정원<br>
+                            • 호수·정자·곡선 회랑<br>
+                            • 주변 성황묘 시장과 연결 → 전통 간식 구경
+                        </div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">입장료:</div>
+                        <div class="info-value">성인 40위안 (아기 무료)</div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">유모차:</div>
+                        <div class="info-value">
+                            <span class="badge badge-success">정원 내 평탄</span>
+                            <span class="badge badge-warning">다리 구간 약간 경사</span>
+                        </div>
+                    </div>
+                    <div class="tip-section">
+                        <div class="tip-title">⏰ 방문 팁</div>
+                        <div class="tip-item">• 09:00 이전 입장 → 관광객 적고 사진 잘 나옴</div>
+                        <div class="tip-item">• 여권 불필요</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="info-card">
+                <div class="attraction-header">
+                    <div class="info-title">난징동루 보행자 거리</div>
+                    <div class="info-subtitle">2일차 - 세계 최장 보행자 거리</div>
+                </div>
+                <div class="info-content">
+                    <div class="info-row">
+                        <div class="info-label">위치:</div>
+                        <div class="info-value">난징동로</div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">특징:</div>
+                        <div class="info-value">
+                            • 상하이 대표 쇼핑 거리<br>
+                            • 유명 브랜드, 백화점, 스낵 가게 밀집
+                        </div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">유모차:</div>
+                        <div class="info-value">
+                            <span class="badge badge-success">전 구간 평탄</span>
+                            <span class="badge badge-info">13:00-15:00 비교적 한산</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="info-card">
+                <div class="attraction-header">
+                    <div class="info-title">대한민국 임시정부 청사</div>
+                    <div class="info-subtitle">3일차 - 독립운동 역사 현장</div>
+                </div>
+                <div class="info-content">
+                    <div class="info-row">
+                        <div class="info-label">위치:</div>
+                        <div class="info-value">마당루 306호 (황푸구)</div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">운영시간:</div>
+                        <div class="info-value">09:00-11:30, 13:00-16:30 (월요일 휴무)</div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">입장료:</div>
+                        <div class="info-value">무료</div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">필수사항:</div>
+                        <div class="info-value">
+                            <span class="badge badge-warning">여권 지참 필수</span>
+                            (보안 검문 있음)
+                        </div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">유모차:</div>
+                        <div class="info-value">
+                            <span class="badge badge-info">1층만 관람 가능</span>
+                            2층은 계단
+                        </div>
+                    </div>
+                    <div class="tip-section">
+                        <div class="tip-title">🏛️ 관람 포인트</div>
+                        <div class="tip-item">• 김구 선생 집무실, 태극기, 독립운동 문서</div>
+                        <div class="tip-item">• 15~20분 내외로 관람 가능</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="info-card">
+                <div class="attraction-header">
+                    <div class="info-title">신천지 (Xintiandi)</div>
+                    <div class="info-subtitle">3일차 - 석고문 건축 감성 거리</div>
+                </div>
+                <div class="info-content">
+                    <div class="info-row">
+                        <div class="info-label">특징:</div>
+                        <div class="info-value">
+                            • 석고문(Shikumen) 건축을 리모델링한 감성 거리<br>
+                            • 고급 레스토랑, 부티크, 카페 밀집
+                        </div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">유모차:</div>
+                        <div class="info-value">
+                            <span class="badge badge-success">전 구간 평탄</span>
+                            보도 넓음
+                        </div>
+                    </div>
+                    <div class="tip-section">
+                        <div class="tip-title">⏰ 방문 팁</div>
+                        <div class="tip-item">• 오전 11시 이전이 가장 한산</div>
+                        <div class="tip-item">• Polux, 元古雲境 등 유모차 친화적 식당 많음</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div id="restaurants" class="tab-content">
+            <div class="info-card">
+                <div class="info-header">
+                    <div class="info-title">라오지스 주자 (老吉士酒家)</div>
+                    <div class="info-subtitle">1일차 저녁 - 상하이 본토 요리</div>
+                </div>
+                <div class="info-content">
+                    <div class="info-row">
+                        <div class="info-label">위치:</div>
+                        <div class="info-value">화이하이중로 473호 (우캉로에서 도보 5분)</div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">영업시간:</div>
+                        <div class="info-value">11:00-14:00, 17:00-21:00</div>
+                    </div>
+                    <div class="menu-section">
+                        <div class="menu-title">🍽️ 대표 메뉴</div>
+                        <div class="menu-item">• 홍샤오러우 (홍조육) - 달달한 갈비찜</div>
+                        <div class="menu-item">• 유단 (유자 닭) - 부드러운 찜닭</div>
+                        <div class="menu-item">• 차오서카이수 (청경채 볶음)</div>
+                    </div>
+                    <div class="tip-section">
+                        <div class="tip-title">👶 유아 동반 팁</div>
+                        <div class="tip-item">• 매운맛 없음, 간도 적당 → 아기와 공유 가능한 반찬 있음</div>
+                        <div class="tip-item">• 의자에 유아용 보조 시트 없음 → 아기를 안고 식사 필요</div>
+                        <div class="tip-item">• 혼잡하므로 16:00 입장이 매우 현명한 선택 ✅</div>
+                    </div>
+                    <button class="copy-btn" onclick="copyText('老吉士酒家淮海路店')" style="width: 100%; margin-top: 15px; padding: 12px;">DiDi 주소 복사</button>
+                </div>
+            </div>
+            
+            <div class="info-card">
+                <div class="info-header">
+                    <div class="info-title">타이갤러리 (泰馆)</div>
+                    <div class="info-subtitle">2일차 점심 - 태국 요리</div>
+                </div>
+                <div class="info-content">
+                    <div class="info-row">
+                        <div class="info-label">위치:</div>
+                        <div class="info-value">푸시완 가리센터 3층</div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">영업시간:</div>
+                        <div class="info-value">11:00-22:00</div>
+                    </div>
+                    <div class="menu-section">
+                        <div class="menu-title">🍽️ 대표 메뉴</div>
+                        <div class="menu-item">• 똠양꿍</div>
+                        <div class="menu-item">• 그린 커리</div>
+                        <div class="menu-item">• 팟타이</div>
+                    </div>
+                    <div class="tip-section">
+                        <div class="tip-title">👶 유아 동반 팁</div>
+                        <div class="tip-item">• "不要辣" 요청 시 완전 무맛 아님, 약간 향만 남음</div>
+                        <div class="tip-item">• 의자 넓고 통로 여유 있음 → 유모차 OK</div>
+                    </div>
+                    <button class="copy-btn" onclick="copyText('泰馆嘉里中心店')" style="width: 100%; margin-top: 15px; padding: 12px;">DiDi 주소 복사</button>
+                </div>
+            </div>
+            
+            <div class="info-card">
+                <div class="info-header">
+                    <div class="info-title">椿庐 (Chun Lu)</div>
+                    <div class="info-subtitle">2일차 점심 - 창작 중식</div>
+                </div>
+                <div class="info-content">
+                    <div class="info-row">
+                        <div class="info-label">위치:</div>
+                        <div class="info-value">루자쭈이 캐피탈 빌딩</div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">영업시간:</div>
+                        <div class="info-value">11:00-21:30</div>
+                    </div>
+                    <div class="menu-section">
+                        <div class="menu-title">🍽️ 대표 메뉴</div>
+                        <div class="menu-item">• 송로버섯 덮밥</div>
+                        <div class="menu-item">• 유자 향 찜 생선</div>
+                        <div class="menu-item">• 차잎 샐러드</div>
+                    </div>
+                    <div class="tip-section">
+                        <div class="tip-title">👶 유아 동반 팁</div>
+                        <div class="tip-item">• 조용하고 고급스러운 분위기, 유모차 진입 가능</div>
+                        <div class="tip-item">• 매운맛 없음, 아기와 공유 가능한 찐 요리 많음</div>
+                    </div>
+                    <button class="copy-btn" onclick="copyText('椿庐凯德晶萃店')" style="width: 100%; margin-top: 15px; padding: 12px;">DiDi 주소 복사</button>
+                </div>
+            </div>
+            
+            <div class="info-card">
+                <div class="info-header">
+                    <div class="info-title">디앤더더 (点都德)</div>
+                    <div class="info-subtitle">2일차 저녁 - 광둥 딤섬</div>
+                </div>
+                <div class="info-content">
+                    <div class="info-row">
+                        <div class="info-label">위치:</div>
+                        <div class="info-value">난징서로 신세계 백화점 6층</div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">영업시간:</div>
+                        <div class="info-value">07:30-22:00</div>
+                    </div>
+                    <div class="menu-section">
+                        <div class="menu-title">🍽️ 대표 메뉴</div>
+                        <div class="menu-item">• 샤오롱바오</div>
+                        <div class="menu-item">• 새우 하가우</div>
+                        <div class="menu-item">• 찹쌀 찐 닭</div>
+                    </div>
+                    <div class="tip-section">
+                        <div class="tip-title">👶 유아 동반 팁</div>
+                        <div class="tip-item">• 딤섬은 따뜻하게 제공 → 아기 음식으로 활용 가능</div>
+                        <div class="tip-item">• 유모차 입장 가능, 단 주말 저녁은 대기 필요 → 17:30 입장이 최적</div>
+                    </div>
+                    <button class="copy-btn" onclick="copyText('点都德新世界店')" style="width: 100%; margin-top: 15px; padding: 12px;">DiDi 주소 복사</button>
+                </div>
+            </div>
+            
+            <div class="info-card">
+                <div class="info-header">
+                    <div class="info-title">공작천채 (孔雀川菜)</div>
+                    <div class="info-subtitle">3일차 점심 - 사천 요리</div>
+                </div>
+                <div class="info-content">
+                    <div class="info-row">
+                        <div class="info-label">위치:</div>
+                        <div class="info-value">신천지 내</div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">영업시간:</div>
+                        <div class="info-value">11:00-22:00</div>
+                    </div>
+                    <div class="menu-section">
+                        <div class="menu-title">🍽️ 대표 메뉴</div>
+                        <div class="menu-item">• 마파두부</div>
+                        <div class="menu-item">• 궁보지딩</div>
+                        <div class="menu-item">• 물냉면 (사천식)</div>
+                    </div>
+                    <div class="tip-section">
+                        <div class="tip-title">👶 유아 동반 팁</div>
+                        <div class="tip-item">• "不要辣, 不要麻" 요청 시 매운맛·마비맛 제거 가능</div>
+                        <div class="tip-item">• 기본 반찬도 매움 → 따로 주문 시 무맛 요청 필수</div>
+                    </div>
+                    <button class="copy-btn" onclick="copyText('孔雀川菜新天地店')" style="width: 100%; margin-top: 15px; padding: 12px;">DiDi 주소 복사</button>
+                </div>
+            </div>
+            
+            <div class="info-card">
+                <div class="info-header">
+                    <div class="info-title">元古雲境 (Yuan Gu Yun Jing)</div>
+                    <div class="info-subtitle">3일차 점심 - 창작 중식</div>
+                </div>
+                <div class="info-content">
+                    <div class="info-row">
+                        <div class="info-label">위치:</div>
+                        <div class="info-value">신천지 내</div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">영업시간:</div>
+                        <div class="info-value">11:00-21:00</div>
+                    </div>
+                    <div class="menu-section">
+                        <div class="menu-title">🍽️ 대표 메뉴</div>
+                        <div class="menu-item">• 구름 단지 찻잎 닭</div>
+                        <div class="menu-item">• 흑임자 경단</div>
+                        <div class="menu-item">• 벚꽃 젤리</div>
+                    </div>
+                    <div class="tip-section">
+                        <div class="tip-title">👶 유아 동반 팁</div>
+                        <div class="tip-item">• 매운맛 전혀 없음, 디저트 중심</div>
+                        <div class="tip-item">• 조용하고 실내 넓음, 유모차 OK</div>
+                        <div class="tip-item">• 아기용 따뜻한 물 제공 가능</div>
+                    </div>
+                    <button class="copy-btn" onclick="copyText('元古雲境新天地店')" style="width: 100%; margin-top: 15px; padding: 12px;">DiDi 주소 복사</button>
+                </div>
+            </div>
+        </div>
+        
+        <div id="cafes" class="tab-content">
+            <div class="info-card">
+                <div class="cafe-header">
+                    <div class="info-title">Captain George</div>
+                    <div class="info-subtitle">1일차 - 실험실 컨셉 카페</div>
+                </div>
+                <div class="info-content">
+                    <div class="info-row">
+                        <div class="info-label">위치:</div>
+                        <div class="info-value">태원로 236호</div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">운영시간:</div>
+                        <div class="info-value">10:00-20:00</div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">특징:</div>
+                        <div class="info-value">실험실 컨셉, 3구역, 넓음</div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">유모차:</div>
+                        <div class="info-value"><span class="badge badge-success">✅ 가능</span></div>
+                    </div>
+                    <button class="copy-btn" onclick="copyText('Captain George风味博物馆')" style="width: 100%; margin-top: 15px; padding: 12px;">DiDi 주소 복사</button>
+                </div>
+            </div>
+            
+            <div class="info-card">
+                <div class="cafe-header">
+                    <div class="info-title">D. ORINO Coffee</div>
+                    <div class="info-subtitle">1일차 - 징안사 인근 조용한 카페</div>
+                </div>
+                <div class="info-content">
+                    <div class="info-row">
+                        <div class="info-label">위치:</div>
+                        <div class="info-value">강딩로 833호</div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">운영시간:</div>
+                        <div class="info-value">09:00-19:00</div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">특징:</div>
+                        <div class="info-value">징안사 인근, 조용, 창가 자리</div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">유모차:</div>
+                        <div class="info-value"><span class="badge badge-success">✅ 가능</span></div>
+                    </div>
+                    <button class="copy-btn" onclick="copyText('D. ORINO咖啡')" style="width: 100%; margin-top: 15px; padding: 12px;">DiDi 주소 복사</button>
+                </div>
+            </div>
+            
+            <div class="info-card">
+                <div class="cafe-header">
+                    <div class="info-title">The People 카페</div>
+                    <div class="info-subtitle">2일차 - 48층 전망 카페</div>
+                </div>
+                <div class="info-content">
+                    <div class="info-row">
+                        <div class="info-label">위치:</div>
+                        <div class="info-value">백옥란 광장 48층</div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">운영시간:</div>
+                        <div class="info-value">10:00-22:00</div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">특징:</div>
+                        <div class="info-value">48층 전망, 푸둥 야경, 넓은 실내</div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">유모차:</div>
+                        <div class="info-value"><span class="badge badge-success">✅ 가능</span></div>
+                    </div>
+                    <button class="copy-btn" onclick="copyText('东大名路501号')" style="width: 100%; margin-top: 15px; padding: 12px;">DiDi 주소 복사</button>
+                </div>
+            </div>
+            
+            <div class="info-card">
+                <div class="cafe-header">
+                    <div class="info-title">Polux Bistro</div>
+                    <div class="info-subtitle">3일차 - 프렌치 브런치</div>
+                </div>
+                <div class="info-content">
+                    <div class="info-row">
+                        <div class="info-label">위치:</div>
+                        <div class="info-value">신천지 마루 18호</div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">운영시간:</div>
+                        <div class="info-value">10:00-22:00</div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">특징:</div>
+                        <div class="info-value">프렌치 브런치, 가족 친화적</div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">유모차:</div>
+                        <div class="info-value"><span class="badge badge-success">✅ 가능</span></div>
+                    </div>
+                    <button class="copy-btn" onclick="copyText('Polux Bistro')" style="width: 100%; margin-top: 15px; padding: 12px;">DiDi 주소 복사</button>
+                </div>
+            </div>
+        </div>
+        
+        <div id="tips" class="tab-content">
+            <div class="general-tip-card">
+                <div class="general-tip-title">📱 필수 앱</div>
+                <div class="general-tip-item">• <strong>DiDi:</strong> "XL" 차량 선택 → 유모차 2대 가능</div>
+                <div class="general-tip-item">• <strong>Dianping:</strong> 식당 리뷰·메뉴 확인 필수 (중국어 이름 복사)</div>
+            </div>
+            
+            <div class="general-tip-card">
+                <div class="general-tip-title">🌶️ 매운맛 조절</div>
+                <div class="general-tip-item">• <strong>"不要辣"</strong> = 안 매움</div>
+                <div class="general-tip-item">• <strong>"不要麻"</strong> = 마비맛 없음 (사천 요리용)</div>
+            </div>
+            
+            <div class="general-tip-card">
+                <div class="general-tip-title">🏛️ 임시정부 청사</div>
+                <div class="general-tip-item">• <strong>여권 필수</strong> 지참 (보안 검문)</div>
+                <div class="general-tip-item">• 토요일 정상 운영</div>
+                <div class="general-tip-item">• 1층만 유모차 OK (2층은 계단)</div>
+            </div>
+            
+            <div class="general-tip-card">
+                <div class="general-tip-title">⏰ 토요일 주의사항</div>
+                <div class="general-tip-item">• <strong>예원:</strong> 09:00 이전 도착</div>
+                <div class="general-tip-item">• <strong>공항:</strong> 13:00 이전 출발</div>
+                <div class="general-tip-item">• 교통 혼잡 대비 여유시간 확보</div>
+            </div>
+            
+            <div class="general-tip-card">
+                <div class="general-tip-title">👶 아기 동반 팁</div>
+                <div class="general-tip-item">• 6개월 아기 - 식사 불가</div>
+                <div class="general-tip-item">• 유모차 필수 지참</div>
+                <div class="general-tip-item">• 모든 카페와 식당 유모차 OK</div>
+                <div class="general-tip-item">• 의자에 유아용 보조 시트 대부분 없음</div>
+            </div>
+            
+            <div class="general-tip-card">
+                <div class="general-tip-title">✈️ 항공 정보</div>
+                <div class="general-tip-item">• <strong>출발:</strong> 10/16 MU512 김포→훵차오 T2 13:00 도착</div>
+                <div class="general-tip-item">• <strong>귀국:</strong> 10/18 FM823 훵차오 T2→김포 16:55 출발</div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="pwa-status" id="pwaStatus">
+        ✅ 오프라인 사용 가능
+    </div>
+    
+    <script>
+        // PWA 관련 변수
+        let deferredPrompt;
+        let isInstalled = false;
+        
+        // PWA 설치 관련 이벤트
+        window.addEventListener('beforeinstallprompt', (e) => {
+            console.log('PWA 설치 프롬프트 준비됨');
+            e.preventDefault();
+            deferredPrompt = e;
+            showInstallButton();
+        });
+        
+        window.addEventListener('appinstalled', (evt) => {
+            console.log('PWA 설치 완료');
+            isInstalled = true;
+            hideInstallButton();
+            showPWAStatus('✅ 앱이 설치되었습니다!');
+        });
+        
+        // 설치 버튼 표시/숨김
+        function showInstallButton() {
+            const installBtn = document.getElementById('installBtn');
+            if (installBtn && !isInstalled) {
+                installBtn.style.display = 'block';
+                installBtn.addEventListener('click', installApp);
+            }
+        }
+        
+        function hideInstallButton() {
+            const installBtn = document.getElementById('installBtn');
+            if (installBtn) {
+                installBtn.style.display = 'none';
+            }
+        }
+        
+        // 앱 설치 함수
+        async function installApp() {
+            if (deferredPrompt) {
+                deferredPrompt.prompt();
+                const { outcome } = await deferredPrompt.userChoice;
+                console.log(`사용자 선택: ${outcome}`);
+                
+                if (outcome === 'accepted') {
+                    showPWAStatus('✅ 설치 중입니다...');
+                } else {
+                    showPWAStatus('❌ 설치가 취소되었습니다');
+                }
+                
+                deferredPrompt = null;
+                hideInstallButton();
+            }
+        }
+        
+        // PWA 상태 메시지 표시
+        function showPWAStatus(message) {
+            const statusEl = document.getElementById('pwaStatus');
+            if (statusEl) {
+                statusEl.textContent = message;
+                statusEl.style.display = 'block';
+                
+                setTimeout(() => {
+                    statusEl.style.display = 'none';
+                }, 3000);
+            }
+        }
+        
+        // 온라인/오프라인 상태 감지
+        function updateOnlineStatus() {
+            const offlineIndicator = document.getElementById('offlineIndicator');
+            
+            if (navigator.onLine) {
+                offlineIndicator.style.display = 'none';
+            } else {
+                offlineIndicator.style.display = 'block';
+            }
+        }
+        
+        window.addEventListener('online', updateOnlineStatus);
+        window.addEventListener('offline', updateOnlineStatus);
+        
+        // Service Worker 등록
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', async () => {
+                try {
+                    const registration = await navigator.serviceWorker.register('/sw.js');
+                    console.log('Service Worker 등록 성공:', registration.scope);
+                    
+                    // 업데이트 확인
+                    registration.addEventListener('updatefound', () => {
+                        const newWorker = registration.installing;
+                        newWorker.addEventListener('statechange', () => {
+                            if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
+                                showPWAStatus('🔄 새 버전이 있습니다. 새로고침하세요.');
+                            }
+                        });
+                    });
+                    
+                    // 설치 후 상태 표시
+                    setTimeout(() => {
+                        if (!isInstalled) {
+                            showPWAStatus('💡 홈 화면에 추가하여 앱처럼 사용하세요!');
+                        }
+                    }, 2000);
+                    
+                } catch (error) {
+                    console.log('Service Worker 등록 실패:', error);
+                }
+            });
+        }
+        
+        // 초기 온라인 상태 확인
+        document.addEventListener('DOMContentLoaded', () => {
+            updateOnlineStatus();
+            
+            // URL 파라미터로 탭 선택
+            const urlParams = new URLSearchParams(window.location.search);
+            const tab = urlParams.get('tab');
+            if (tab) {
+                showTab(tab);
+            }
+        });
+        
+        function showTab(tabName) {
+            // Hide all tab contents
+            const contents = document.querySelectorAll('.tab-content');
+            contents.forEach(content => content.classList.remove('active'));
+            
+            // Remove active class from all tabs
+            const tabs = document.querySelectorAll('.nav-tab');
+            tabs.forEach(tab => tab.classList.remove('active'));
+            
+            // Show selected tab content
+            document.getElementById(tabName).classList.add('active');
+            
+            // Add active class to clicked tab
+            event.target.classList.add('active');
+        }
+        
+        function copyText(text) {
+            // 햅틱 피드백 (지원되는 경우)
+            if (navigator.vibrate) {
+                navigator.vibrate(50);
+            }
+            
+            // 모바일 환경에서 더 안정적인 복사 기능
+            try {
+                // 방법 1: 최신 Clipboard API 시도
+                if (navigator.clipboard && window.isSecureContext) {
+                    navigator.clipboard.writeText(text).then(() => {
+                        showToast('✅ 복사완료: ' + text);
+                    }).catch(() => {
+                        fallbackCopy(text);
+                    });
+                } else {
+                    fallbackCopy(text);
+                }
+            } catch (error) {
+                fallbackCopy(text);
+            }
+        }
+        
+        function fallbackCopy(text) {
+            try {
+                // 방법 2: 텍스트 영역을 사용한 복사 (모바일 최적화)
+                const textArea = document.createElement('textarea');
+                textArea.value = text;
+                textArea.style.position = 'fixed';
+                textArea.style.left = '-999999px';
+                textArea.style.top = '-999999px';
+                textArea.style.opacity = '0';
+                textArea.setAttribute('readonly', '');
+                textArea.setAttribute('contenteditable', 'true');
+                
+                document.body.appendChild(textArea);
+                
+                // iOS Safari 지원
+                if (navigator.userAgent.match(/ipad|iphone/i)) {
+                    const range = document.createRange();
+                    range.selectNodeContents(textArea);
+                    const selection = window.getSelection();
+                    selection.removeAllRanges();
+                    selection.addRange(range);
+                    textArea.setSelectionRange(0, 999999);
+                } else {
+                    textArea.select();
+                    textArea.setSelectionRange(0, 999999);
+                }
+                
+                const successful = document.execCommand('copy');
+                document.body.removeChild(textArea);
+                
+                if (successful) {
+                    showToast('✅ 복사완료: ' + text);
+                } else {
+                    showManualCopy(text);
+                }
+            } catch (error) {
+                showManualCopy(text);
+            }
+        }
+        
+        function showManualCopy(text) {
+            // 방법 3: 수동 복사를 위한 모달 표시
+            const modal = document.createElement('div');
+            modal.style.cssText = `
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0,0,0,0.8);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                z-index: 10000;
+                padding: 20px;
+                box-sizing: border-box;
+            `;
+            
+            const content = document.createElement('div');
+            content.style.cssText = `
+                background: white;
+                padding: 20px;
+                border-radius: 12px;
+                max-width: 90%;
+                text-align: center;
+            `;
+            
+            content.innerHTML = `
+                <h3 style="margin-bottom: 15px;">📋 주소 복사</h3>
+                <p style="margin-bottom: 15px; color: #666;">아래 주소를 길게 눌러서 복사하세요:</p>
+                <div style="
+                    background: #f5f5f5;
+                    padding: 15px;
+                    border-radius: 8px;
+                    font-family: monospace;
+                    font-size: 16px;
+                    word-break: break-all;
+                    user-select: all;
+                    -webkit-user-select: all;
+                    margin-bottom: 15px;
+                ">${text}</div>
+                <button onclick="this.parentElement.parentElement.remove()" style="
+                    background: #2196F3;
+                    color: white;
+                    border: none;
+                    padding: 10px 20px;
+                    border-radius: 20px;
+                    cursor: pointer;
+                ">닫기</button>
+            `;
+            
+            modal.appendChild(content);
+            document.body.appendChild(modal);
+            
+            // 모달 외부 클릭시 닫기
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    modal.remove();
+                }
+            });
+        }
+        
+        function showToast(message) {
+            // 기존 토스트 제거
+            const existingToast = document.querySelector('.toast-message');
+            if (existingToast) {
+                existingToast.remove();
+            }
+            
+            const toast = document.createElement('div');
+            toast.className = 'toast-message';
+            toast.style.cssText = `
+                position: fixed;
+                bottom: 80px;
+                left: 50%;
+                transform: translateX(-50%);
+                background: #4CAF50;
+                color: white;
+                padding: 12px 24px;
+                border-radius: 25px;
+                z-index: 10000;
+                font-size: 14px;
+                font-weight: bold;
+                box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+                max-width: 90%;
+                text-align: center;
+                animation: slideUp 0.3s ease-out;
+            `;
+            
+            // 애니메이션 추가
+            if (!document.querySelector('#toast-animation')) {
+                const style = document.createElement('style');
+                style.id = 'toast-animation';
+                style.textContent = `
+                    @keyframes slideUp {
+                        from {
+                            opacity: 0;
+                            transform: translateX(-50%) translateY(20px);
+                        }
+                        to {
+                            opacity: 1;
+                            transform: translateX(-50%) translateY(0);
+                        }
+                    }
+                `;
+                document.head.appendChild(style);
+            }
+            
+            toast.textContent = message;
+            document.body.appendChild(toast);
+            
+            // 3초 후 자동 제거
+            setTimeout(() => {
+                if (toast.parentNode) {
+                    toast.style.animation = 'slideUp 0.3s ease-out reverse';
+                    setTimeout(() => {
+                        if (toast.parentNode) {
+                            toast.remove();
+                        }
+                    }, 300);
+                }
+            }, 3000);
+        }
+    </script>
+</body>
+</html>

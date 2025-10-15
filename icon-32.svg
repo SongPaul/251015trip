@@ -1,0 +1,26 @@
+<svg width="32" height="32" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#667eea;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#764ba2;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- 배경 -->
+  <rect width="32" height="32" rx="4.8" fill="url(#bg)"/>
+  
+  <!-- 벚꽃 모양 -->
+  <circle cx="16" cy="11.2" r="3.84" fill="#FFB6C1" opacity="0.8"/>
+  <circle cx="13.44" cy="9.92" r="1.6" fill="#FF69B4"/>
+  <circle cx="18.56" cy="9.92" r="1.6" fill="#FF69B4"/>
+  <circle cx="16" cy="8.64" r="1.6" fill="#FF69B4"/>
+  <circle cx="14.4" cy="12.48" r="1.6" fill="#FF69B4"/>
+  <circle cx="17.6" cy="12.48" r="1.6" fill="#FF69B4"/>
+  
+  <!-- 텍스트 -->
+  
+  <text x="16" y="20.8" font-family="Arial, sans-serif" font-size="4.8" font-weight="bold" text-anchor="middle" fill="white">상</text>
+  
+  
+  
+</svg>

@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>PWA 아이콘 생성기</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        canvas { margin: 10px; border: 1px solid #ccc; }
+        .download-section { margin: 20px 0; }
+        .download-btn { 
+            display: inline-block; 
+            margin: 5px; 
+            padding: 10px 15px; 
+            background: #2196F3; 
+            color: white; 
+            text-decoration: none; 
+            border-radius: 5px; 
+        }
+    </style>
+</head>
+<body>
+    <h1>상해 여행 가이드 PWA 아이콘 생성</h1>
+    <p>아래 아이콘들을 다운로드하여 사용하세요:</p>
+    
+    <div id="canvasContainer"></div>
+    <div class="download-section" id="downloadSection"></div>
+    
+    <script>
+        const sizes = [16, 32, 72, 96, 128, 144, 152, 192, 384, 512];
+        
+        function createIcon(size) {
+            const canvas = document.createElement('canvas');
+            canvas.width = size;
+            canvas.height = size;
+            const ctx = canvas.getContext('2d');
+            
+            // 배경 그라디언트
+            const gradient = ctx.createLinearGradient(0, 0, size, size);
+            gradient.addColorStop(0, '#667eea');
+            gradient.addColorStop(1, '#764ba2');
+            
+            // 둥근 사각형 배경
+            const radius = size * 0.15;
+            ctx.fillStyle = gradient;
+            ctx.beginPath();
+            ctx.roundRect(0, 0, size, size, radius);
+            ctx.fill();
+            
+            // 벚꽃 모양
+            const centerX = size / 2;
+            const centerY = size * 0.35;
+            const petalSize = size * 0.12;
+            
+            ctx.fillStyle = '#FFB6C1';
+            ctx.globalAlpha = 0.8;
+            ctx.beginPath();
+            ctx.arc(centerX, centerY, petalSize * 2, 0, 2 * Math.PI);
+            ctx.fill();
+            
+            ctx.fillStyle = '#FF69B4';
+            ctx.globalAlpha = 1;
+            
+            // 5개 꽃잎
+            const positions = [
+                [centerX - petalSize * 1.5, centerY - petalSize],
+                [centerX + petalSize * 1.5, centerY - petalSize],
+                [centerX, centerY - petalSize * 2],
+            ];
+            
+            positions.forEach(([x, y]) => {
+                ctx.beginPath();
+                ctx.arc(x, y, petalSize, 0, 2 * Math.PI);
+                ctx.fill();
+            });
+            
+            // 텍스트
+            ctx.fillStyle = 'white';
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            
+            if (size >= 128) {
+                ctx.font = `bold ${size * 0.09}px Arial`;
+                ctx.fillText('상해', centerX, centerY + size * 0.25);
+                ctx.font = `bold ${size * 0.07}px Arial`;
+                ctx.fillText('여행', centerX, centerY + size * 0.35);
+            } else if (size >= 72) {
+                ctx.font = `bold ${size * 0.12}px Arial`;
+                ctx.fillText('상해', centerX, centerY + size * 0.3);
+            } else {
+                ctx.font = `bold ${size * 0.15}px Arial`;
+                ctx.fillText('상', centerX, centerY + size * 0.3);
+            }
+            
+            // 작은 아이콘들 (큰 사이즈에만)
+            if (size >= 192) {
+                const iconY = size * 0.82;
+                const iconSize = size * 0.03;
+                
+                // 배경 원
+                ctx.fillStyle = 'rgba(255, 255, 255, 0.8)';
+                [centerX - size * 0.15, centerX, centerX + size * 0.15].forEach(x => {
+                    ctx.beginPath();
+                    ctx.arc(x, iconY, iconSize * 2, 0, 2 * Math.PI);
+                    ctx.fill();
+                });
+                
+                // 아이콘 텍스트
+                ctx.fillStyle = '#667eea';
+                ctx.font = `${iconSize * 2}px Arial`;
+                ctx.fillText('✈', centerX - size * 0.15, iconY);
+                ctx.fillText('🍽', centerX, iconY);
+                ctx.fillText('📱', centerX + size * 0.15, iconY);
+            }
+            
+            return canvas;
+        }
+        
+        function downloadCanvas(canvas, filename) {
+            const link = document.createElement('a');
+            link.download = filename;
+            link.href = canvas.toDataURL();
+            link.click();
+        }
+        
+        // 모든 크기의 아이콘 생성
+        sizes.forEach(size => {
+            const canvas = createIcon(size);
+            canvas.title = `${size}x${size}`;
+            document.getElementById('canvasContainer').appendChild(canvas);
+            
+            // 다운로드 버튼 생성
+            const downloadBtn = document.createElement('a');
+            downloadBtn.className = 'download-btn';
+            downloadBtn.textContent = `${size}x${size} 다운로드`;
+            downloadBtn.href = '#';
+            downloadBtn.onclick = (e) => {
+                e.preventDefault();
+                downloadCanvas(canvas, `icon-${size}.png`);
+            };
+            document.getElementById('downloadSection').appendChild(downloadBtn);
+        });
+        
+        // 전체 다운로드 버튼
+        const downloadAllBtn = document.createElement('button');
+        downloadAllBtn.textContent = '모든 아이콘 다운로드';
+        downloadAllBtn.style.cssText = 'padding: 15px 30px; background: #4CAF50; color: white; border: none; border-radius: 5px; font-size: 16px; margin: 20px 0;';
+        downloadAllBtn.onclick = () => {
+            sizes.forEach(size => {
+                setTimeout(() => {
+                    const canvas = createIcon(size);
+                    downloadCanvas(canvas, `icon-${size}.png`);
+                }, size * 10); // 순차적으로 다운로드
+            });
+        };
+        document.getElementById('downloadSection').appendChild(downloadAllBtn);
+    </script>
+</body>
+</html>
